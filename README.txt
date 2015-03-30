@@ -1,1 +1,0 @@
-Readme file to test GIT mechanism.

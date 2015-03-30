@@ -1,0 +1,56 @@
+body {
+    background-color: rgb(227, 227, 227);
+    color: black;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+/* helps to put the error pane into the vertical center of the screen */
+.baseline {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    display: block;
+}
+
+.errorPane {
+    margin: -112px auto;   /* pulls the dialog above the baseline */
+    display: table;
+    width: 430px;
+    padding: 30px;
+    background-color: #CECECE;
+    text-align: left;
+}
+
+.errorPane h1 {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 28px;
+    font-weight: normal;
+    margin: 0px 0px 0px 0px;
+    color: white;
+}
+
+.errorPane h2 {
+    font-family: Verdana, serif;
+    font-size: 12px;
+    font-weight: bold;
+    padding-top: 3px;
+}
+
+.errorPane p {
+    font-family: Verdana, serif;
+    font-size: 12px;
+}
+
+a {
+    color: blue;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: #FFCB18;
+    text-decoration: none;
+}

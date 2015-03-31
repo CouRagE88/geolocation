@@ -1,2 +1,2 @@
 # geolocation
-Spring project to test git
+Private Spring practice project to test git

@@ -53,6 +53,6 @@
 	 <div id="map-canvas" style="height:300px; width:500px"></div>
 
 	<!-- Link to the home page so that the user can immediately start a new search -->
-	<a href="<c:url value="/ipsearch-form.html"/>">Start a new Search</a>
+	<a href="<c:url value="/ipsearch.html"/>">Start a new Search</a>
 </body>
 </html>

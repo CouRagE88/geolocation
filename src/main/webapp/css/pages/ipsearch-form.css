@@ -1,0 +1,39 @@
+.inputbox {
+    /* height: 310px; */
+    width: 500px;
+}
+
+.inputbox p {
+    font-family: 'Allan',serif;
+    margin-top: 20px;
+    margin-bottom: -24px;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+    font-size: 36px;
+    text-align: center;
+}
+
+.inputbox form {
+    margin: 30px auto;
+    font-family: 'Actor',sans-serif;
+}
+
+
+.inputbox button {
+	margin-top: 18px;
+	float: right;
+}
+
+.ui-widget {
+	font-size: 11px !important;
+}
+
+.inputIpAddress {
+    -webkit-transition:all linear 0.5s;
+    transition:all linear 0.5s;
+    background: transparent;
+}
+
+.inputIpAddress.ng-invalid {
+	color:white;
+    background: red;
+}

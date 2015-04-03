@@ -20,7 +20,15 @@
 	
 	<!-- Application Loggers -->
 	<logger name="com.epam.bench.geolocation">
-		<level value="debug" />
+		<level value="DEBUG" />
+	</logger>
+	
+	<logger name="org.apache">
+		<level value="WARN" />
+	</logger>
+
+	<logger name="org.springframework">
+		<level value="INFO" />
 	</logger>
 	
 	<!-- 3rdparty Loggers -->

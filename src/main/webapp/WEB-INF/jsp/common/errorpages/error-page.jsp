@@ -33,7 +33,7 @@
 					<p>
 						<fmt:message key="errorpage.annex" bundle="${msg}">
 							<fmt:param>
-								<a href="<c:url value="/" />">
+								<a href="<c:url value="/ipsearh.html" />">
 							</fmt:param>
 							<fmt:param>
 								</a>
@@ -55,7 +55,7 @@
 							<p>
 								<fmt:message key="errorpage.annex" bundle="${msg}">
 									<fmt:param>
-										<a href="<c:url value="/" />">
+										<a href="<c:url value="/ipsearch.html" />">
 									</fmt:param>
 									<fmt:param>
 										</a>

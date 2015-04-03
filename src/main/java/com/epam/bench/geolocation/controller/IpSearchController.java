@@ -19,9 +19,8 @@ import com.epam.bench.geolocation.domain.GeoLocationEntity;
 import com.epam.bench.geolocation.service.GeoLocationService;
 
 @Controller
+@RequestMapping(value = "/ipsearch.html")
 public class IpSearchController {
-
-    private static final String VIEW = "ipsearch-form";
     
     private Logger logger = LoggerFactory.getLogger(getClass());
     

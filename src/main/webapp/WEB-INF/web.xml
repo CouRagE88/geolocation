@@ -24,9 +24,9 @@
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
-  
+    
   <servlet>
-    <servlet-name>geoMvcServlet</servlet-name>
+    <servlet-name>geoLocationServlet</servlet-name>
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
     <init-param>
       <param-name>contextConfigLocation</param-name>
@@ -34,16 +34,15 @@
     </init-param>
     <load-on-startup>1</load-on-startup>
   </servlet>
-  
+
   <servlet-mapping>
-    <servlet-name>geoMvcServlet</servlet-name>
-    <url-pattern>*.html</url-pattern>
+    <servlet-name>geoLocationServlet</servlet-name>
+    <url-pattern>/service/*</url-pattern>
   </servlet-mapping>
-  
-  <!-- 
+
+
   <welcome-file-list>
-    <welcome-file>ipsearch-form.html</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
-   -->
   
 </web-app>

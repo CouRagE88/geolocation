@@ -84,6 +84,9 @@ public class GeoLocationEntity {
     }
     
     public String getTimeZone() {
+        if(timeZone == null) {
+            return "n/a";
+        }
         return timeZone.getID();
     }
     
@@ -106,6 +109,6 @@ public class GeoLocationEntity {
     @Override
     public String toString() {
         return String.format("country: %s; region: %s; city: %s; latitude: %f; longitude: %f; zipCode: %s; timeZone: %s",
-                countryName, regionName, cityName, latitude, longitude, zipCode, timeZone.getID());     
+                countryName, regionName, cityName, latitude, longitude, zipCode, getTimeZone());     
     }
 }

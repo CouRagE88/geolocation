@@ -28,22 +28,12 @@
 		    <value>lang.errorpages</value>
 		  </list>
 		</property>
-  </bean>
+  	</bean>
   
   <bean id="simpleMappingExceptionResolver"
           class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
-        <!-- no custom exceptionMappings are used currently, everything goes to defaultErrorView
-        <property name="exceptionMappings">
-            <map>
-                <entry key="DatabaseException" value="databaseError"/>
-                <entry key="CannotCreateTransactionException" value="/common/errorpages/error-page"/>
-            </map>
-        </property>
-        -->
-        <!-- See note below on how this interacts with Spring Boot -->
         <property name="defaultErrorView" value="/common/errorpages/error-page"/>
         <property name="exceptionAttribute" value="ex"/>
-        
         <!-- Name of logger to use to log exceptions. Unset by default, so logging disabled -->
         <property name="warnLogCategory" value="example.MvcLogger"/>
     </bean>

@@ -7,7 +7,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,13 +17,13 @@ import com.epam.bench.geolocation.common.errorhandling.UserException;
 import com.epam.bench.geolocation.domain.GeoLocationEntity;
 import com.epam.bench.geolocation.service.GeoLocationService;
 
-@Controller
-@RequestMapping(value = "/ipsearch.html")
+//@Controller
+//@RequestMapping(value = "/ipsearch.html")
 public class IpSearchController {
     
     private Logger logger = LoggerFactory.getLogger(getClass());
     
-    @Autowired
+    //@Autowired
     private GeoLocationService service;
 
     /**
@@ -38,7 +37,7 @@ public class IpSearchController {
     /**
      * The initialized method called once the servlet is up deployed
      */
-    @PostConstruct
+    //@PostConstruct
     public void initialized() {
         logger.debug("IpSearchController is initialized - @PostConstruct called");
     }
@@ -50,7 +49,7 @@ public class IpSearchController {
      * created GeoLocationEntity object is the model.
      * The latter is required by the spring form model binding mechanism for some magical reason.
      */
-    @RequestMapping(method = RequestMethod.GET)
+    //@RequestMapping(method = RequestMethod.GET)
     public ModelAndView displayIpSearchForm() {
         return new ModelAndView("ipsearch-form", "geoLocation", new GeoLocationEntity());
     }
@@ -65,7 +64,7 @@ public class IpSearchController {
      * @throws Exception which can be either business-, user- or unknown Exception.
      * Anything thrown here will be handled by the simpleMappingExceptionResolver bean.
      */
-    @RequestMapping(method=RequestMethod.POST)
+    //@RequestMapping(method=RequestMethod.POST)
     public String processSearch(@ModelAttribute("geoLocation") GeoLocationEntity geoLocation,
             //BindingResult formBindingResult,
             ModelMap model) throws Exception {

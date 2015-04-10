@@ -45,20 +45,17 @@ public class GeoLocationServiceImpl implements GeoLocationService {
         
         String[] tokens = ipAddress.split("\\.");
         if (tokens.length != 4) {
-            logger.error("Invalid Ip-Address format: "+ipAddress + " - address must consist of 4, dot-separated parts");
-            throw new InvalidIpAddressException();
+            throw new InvalidIpAddressException("Invalid Ip-Address format: "+ipAddress + " - address must consist of 4, dot-separated parts");
         }
         
         for (String str : tokens) {
             try {
                 int i = Integer.parseInt(str);
                 if((i < 0) || (i > 255)) {
-                    logger.error("Invalid IPv4 Address: "+ipAddress+" -  may only contain digits between 0 and 255.");
-                    throw new InvalidIpAddressException();
+                    throw new InvalidIpAddressException("Invalid IPv4 Address: "+ipAddress+" -  may only contain digits between 0 and 255.");
                 }
             } catch (NumberFormatException e) {
-                logger.error("Invalid IPv4 Address: "+ipAddress+" - it may only contain digits.");
-                throw new InvalidIpAddressException();
+                throw new InvalidIpAddressException("Invalid IPv4 Address: "+ipAddress+" - it may only contain digits.");
             }
         }
     }
@@ -93,8 +90,7 @@ public class GeoLocationServiceImpl implements GeoLocationService {
            "".equals(geoLocation.getZipCode()) || "-".equals(geoLocation.getZipCode()) &&
            "".equals(geoLocation.getTimeZone()) || "-".equals(geoLocation.getZipCode()))
         {
-            logger.error("There is no matching location in the database for this IPv4 Address.");
-            throw new LocationDoesNotExistException();
+            throw new LocationDoesNotExistException("There is no matching location in the database for this IPv4 Address.");
         }
     }
 }

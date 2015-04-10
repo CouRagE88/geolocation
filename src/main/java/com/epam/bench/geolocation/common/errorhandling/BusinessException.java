@@ -9,4 +9,12 @@ package com.epam.bench.geolocation.common.errorhandling;
 */
 public class BusinessException extends GenericException {
 
+    public BusinessException(String message) {
+        super(message);
+    }
+    
+    public BusinessException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
 }

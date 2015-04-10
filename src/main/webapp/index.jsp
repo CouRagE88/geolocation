@@ -41,7 +41,20 @@
 
 </head>
 <body ng-app="geoLocationService">
+
+	<div id="fb-root"></div>
+	<script>
+	(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/hu_HU/sdk.js#xfbml=1&version=v2.3&appId=482074371939840";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+	</script>
+
 	<div class="container">
+		
 		<div class="jumbotron">
 			<h2>IP-based Geo-Location Service</h2>
 	
@@ -65,6 +78,15 @@
 				<div id="result" class="errorMessage" />
 			</form>
 		</div>
+		
+		<div class="fb-like"
+		 data-href="http://localhost:8080/bench/" 
+		 data-layout="button_count" 
+		 data-action="recommend" 
+		 data-show-faces="true" 
+		 data-share="true">
+		</div>
+		
 	</div>
 </body>
 </html>

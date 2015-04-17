@@ -16,7 +16,12 @@ public class SearchResult {
         LOCATION_DOES_NOT_EXIST_EXCEPTION,
         INVALID_IPADDRESS_EXCEPTION}
 
+    private String countryName;
     private String cityName;
+    private float latitude;
+    private float longitude;
+    
+    
     private Status status;
 
     public Status getStatus() {
@@ -29,9 +34,25 @@ public class SearchResult {
     public String getCityName() {
         return cityName;
     }
-    
     public void setCityName(String cityName) {
         this.cityName = cityName;
     }
-    
+    public String getCountryName() {
+        return countryName;
+    }
+    public void setCountryName(String countryName) {
+        this.countryName = countryName;
+    }
+    public float getLatitude() {
+        return latitude;
+    }
+    public void setLatitude(float latitude) {
+        this.latitude = latitude;
+    }
+    public float getLongitude() {
+        return longitude;
+    }
+    public void setLongitude(float longitude) {
+        this.longitude = longitude;
+    }    
 }

@@ -4,7 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="en">
 <head>
-<meta charset="utf-8">
+	<meta charset="utf-8">
 	<title>IP-based Geo-Location Service</title>
 	
 	<!-- Angular imports-->  
@@ -17,12 +17,10 @@
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	 
-	<script type="text/javascript">
-    	// this variable holds the context of the webpplication
-    	// will be used in the static javascript to compose the url of the REST service.
-    	var webAppContext="<c:url value="/" />";
-  	</script>
+	 <!-- Google JS API import -->
+	 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 	  	
+	<!-- CSS imports -->
   	<style>
   		.form-control.ng-invalid {
     		color:white;
@@ -36,24 +34,18 @@
 	<script type="text/javascript" src="<c:url value="scripts/lib/jquery.json-2.3.min.js" />"></script>
 	
 	<!-- Private JS imports -->
-	<script type="text/javascript" src="<c:url value="scripts/search-jquery-json.js" />"></script>
-	<script src="<c:url value="scripts/ipsearch-form.js" />"></script>
-
+	<script src="<c:url value="scripts/search-jquery-json.js" />"></script>
+	<script src="<c:url value="scripts/validateIpAngular.js" />"></script>
+	<script src="<c:url value="scripts/initGoogleMaps.js" />"></script>
+	
+	<script type="text/javascript">
+		var webAppContext="<c:url value="/" />";
+  	</script>
+	
 </head>
 <body ng-app="geoLocationService">
 
-	<div id="fb-root"></div>
-	<script>
-	(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/hu_HU/sdk.js#xfbml=1&version=v2.3&appId=482074371939840";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
-	</script>
-
-	<div class="container">
+	<div id="searchContainer" class="container">
 		
 		<div class="jumbotron">
 			<h2>IP-based Geo-Location Service</h2>
@@ -75,18 +67,40 @@
 							Invalid IP-Address.
 						</span>
 				</div>
-				<div id="result" class="errorMessage" />
 			</form>
 		</div>
-		
-		<div class="fb-like"
-		 data-href="http://localhost:8080/bench/" 
-		 data-layout="button_count" 
-		 data-action="recommend" 
-		 data-show-faces="true" 
-		 data-share="true">
+	</div>
+	<div id="resultContainer" class="container" style="display:none">
+		<div id="result">		
+			<div style="border-radius: 25px; border: 2px solid #8AC007; padding: 20px;">
+				<h2>GeoLocation:</h2>
+				<table class="table table-hover" 
+					>
+				    <tr>
+				        <td>Country Name: </td>
+				        <td id=countryName></td>
+				    </tr>
+				    <tr>
+				        <td>City Name: </td>
+				        <td id="cityName"></td>
+				    </tr>
+				    <tr>
+				        <td>Latitude: </td>
+				        <td id="latitude"></td>
+				    </tr>
+				    <tr>
+				        <td>Longitude: </td>
+				        <td id="longitude"></td>
+				    </tr>
+				</table>
+			</div>
+			<!-- Insert the Google Maps -->
+			<br/>
+			<br/>
+	 		<div id="googleMap" class="jumbotron">
+	 			<div id="map-canvas" style="height:300px; width:500px"></div>
+	 		</div>
 		</div>
-		
 	</div>
 </body>
 </html>

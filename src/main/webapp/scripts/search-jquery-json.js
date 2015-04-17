@@ -3,8 +3,8 @@
  * From the (JSON) response the result is extracted and displayed.
  */
 $(document).ready(function() {
-	
-	$("#search-button").click(function(event){
+		
+	$("#search-button").click(function(event) {
 
 		var ipAddressValue = $('input[name="ipAddress"]').val();
         var requestData = { ipAddress: ipAddressValue};
@@ -21,7 +21,18 @@ $(document).ready(function() {
 			
 			success: function(response) {
 				if (response.status == "OK") {
-					$("#result").text("The result is: " + response.cityName);
+					$("#countryName").text(response.countryName);
+					$("#cityName").text(response.cityName);
+					$("#latitude").text(response.latitude);
+					$("#longitude").text(response.longitude);		
+					latitude = response.latitude;
+					longitude = response.longitude;
+										
+					google.maps.event.addDomListener(document.getElementById("resultContainer"), 'load', initialize(response.latitude, response.longitude));
+					
+					//$("#resultContainer").slideToggle(750);
+					$("#resultContainer").slideDown(750);
+								
 				} else if (response.status == "LOCATION_DOES_NOT_EXIST_EXCEPTION") {
 					$("#result").text("Sorry, the specified IP-Address is not yet mapped to any location around the globe.");	
 				} else if (response.status == "INVALID_IPADDRESS_EXCEPTION") {

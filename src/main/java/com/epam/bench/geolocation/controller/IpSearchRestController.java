@@ -53,7 +53,10 @@ public class IpSearchRestController {
             GeoLocationEntity geoLocation = service.getGeoLocation(request.getIpAddress());
             
             //TODO asserts
+            response.setCountryName(geoLocation.getCountryName());
             response.setCityName(geoLocation.getCityName());
+            response.setLatitude(geoLocation.getLatitude());
+            response.setLongitude(geoLocation.getLongitude());
             response.setStatus(SearchResult.Status.OK);
 
         } catch (BusinessException businessException) {

@@ -4,8 +4,12 @@
  */
 $(document).ready(function() {
 		
-	$("#search-button").click(function(event) {
+	$("#ipAddress").click(function(event) {
+		$("#resultErrorMessage").hide();
+	});
 
+	$("#search-button").click(function(event) {
+		
 		var ipAddressValue = $('input[name="ipAddress"]').val();
         var requestData = { ipAddress: ipAddressValue};
   	        
@@ -30,15 +34,17 @@ $(document).ready(function() {
 										
 					google.maps.event.addDomListener(document.getElementById("resultContainer"), 'load', initialize(response.latitude, response.longitude));
 					
-					//$("#resultContainer").slideToggle(750);
 					$("#resultContainer").slideDown(750);
 								
 				} else if (response.status == "LOCATION_DOES_NOT_EXIST_EXCEPTION") {
-					$("#result").text("Sorry, the specified IP-Address is not yet mapped to any location around the globe.");	
+					$("#resultErrorMessage").show();
+					$("#resultErrorMessage").html("Sorry, the specified IP-Address is not yet mapped to any location around the globe.");
 				} else if (response.status == "INVALID_IPADDRESS_EXCEPTION") {
-					$("#result").text("IP-based localization could not be performed due to invalid IP Address.");	
+					$("#resultErrorMessage").show();
+					$("#resultErrorMessage").html("IP-based localization could not be performed due to invalid IP Address.");	
 				} else {
-					$("#result").text("TODO - weird error");
+					$("#resultErrorMessage").show();
+					$("#resultErrorMessage").html("TODO - weird error");
 				} 
 			},
 

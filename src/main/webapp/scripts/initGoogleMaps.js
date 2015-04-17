@@ -1,6 +1,4 @@
 var map;
-//var latitude = ${latitude};
-//var longitude = ${longitude};
 
 function initialize(latitude, longitude) {
 				

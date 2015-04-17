@@ -4,6 +4,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="en">
 <head>
+	<meta property="og:url"                content="http://www.nytimes.com/2015/02/19/arts/international/when-great-minds-dont-think-alike.html" />
+	<meta property="og:title"              content="IP-based Geolocation" />
+	<meta property="og:description"        content="Your current location based on the entered IP-Address" />
+	<meta property="og:site_name"          content="GeoLocation" />
+	<meta property="og:image"              content="http://static01.nyt.com/images/2015/02/19/arts/international/19iht-btnumbers19A/19iht-btnumbers19A-facebookJumbo-v2.jpg" />
+	<meta property="og:article_author"     content="David Keri" />
+	<meta property="og:article_publisher"  content="Epam" />
+	<meta property="fb:app_id"             content="961883970498028" />
+	
 	<meta charset="utf-8">
 	<title>IP-based Geo-Location Service</title>
 	
@@ -38,6 +47,9 @@
 	<script src="<c:url value="scripts/validateIpAngular.js" />"></script>
 	<script src="<c:url value="scripts/initGoogleMaps.js" />"></script>
 	
+	<script src="<c:url value="scripts/facebookLogin.js" />"></script>
+	<!-- <script src="<c:url value="scripts/facebookLoginJQuery.js" />"></script>-->
+	
 	<script type="text/javascript">
 		var webAppContext="<c:url value="/" />";
   	</script>
@@ -46,11 +58,22 @@
 <body ng-app="geoLocationService">
 
 	<div id="searchContainer" class="container">
-		
+			
 		<div class="jumbotron">
-			<h2>IP-based Geo-Location Service</h2>
+			
+			<div id="header">
+				<div id="title" style="width: 450px; display:inline; float: left;">
+					<h2>IP-based Geo-Location Service</h2>
+				</div>
+				<div class="fb-share-button" data-href="http://www.index.hu/" data-layout="button_count" style="float: right; padding-top: 30px; padding-left: 10px"></div>
+				<div class="fb-login-button" data-max-rows="1" data-size="small" data-show-faces="false" data-auto-logout-link="true" onlogin="checkLoginState();"
+					 style="float: right; padding-top: 30px; padding-left: 10px"></div>
+					<div id="status"style="float: right; padding-top: 30px">
+				</div>
+				
+			</div>
 	
-			<form name="ipsearchForm" class="form-inline" ng-controller="ValidateIpController">
+			<form name="ipsearchForm" class="form-inline" ng-controller="ValidateIpController" style="clear: both;">
 				<div class="form-group">		
 					<label for="ipAddress">Enter your IPv4 Address:</label>
 					
@@ -63,15 +86,17 @@
     				<input type="submit" id="search-button" class="hidden"/>
 				</div>
 				<div style="padding-left: 180px;">
-						<span class="errorMessage" ng-show="ipsearchForm.ipAddress.$error.pattern">
+						<span id="validationErrorMessage" class="errorMessage" ng-show="ipsearchForm.ipAddress.$error.pattern">
 							Invalid IP-Address.
+						</span>
+						<span id="resultErrorMessage" class="errorMessage">
 						</span>
 				</div>
 			</form>
 		</div>
 	</div>
 	<div id="resultContainer" class="container" style="display:none">
-		<div id="result">		
+		<div id="result">
 			<div style="border-radius: 25px; border: 2px solid #8AC007; padding: 20px;">
 				<h2>GeoLocation:</h2>
 				<table class="table table-hover" 
@@ -98,7 +123,8 @@
 			<br/>
 			<br/>
 	 		<div id="googleMap" class="jumbotron">
-	 			<div id="map-canvas" style="height:300px; width:500px"></div>
+	 			<div id="map-canvas" style="height:300px; width:500px">
+	 			</div>
 	 		</div>
 		</div>
 	</div>

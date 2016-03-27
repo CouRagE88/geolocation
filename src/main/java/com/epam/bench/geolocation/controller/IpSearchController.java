@@ -1,21 +1,14 @@
 package com.epam.bench.geolocation.controller;
 
-import javax.annotation.PostConstruct;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
-
 import com.epam.bench.geolocation.common.errorhandling.BusinessException;
 import com.epam.bench.geolocation.common.errorhandling.UserException;
-import com.epam.bench.geolocation.domain.GeoLocationEntity;
+import com.epam.bench.geolocation.domain.GeoLocation;
 import com.epam.bench.geolocation.service.GeoLocationService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.servlet.ModelAndView;
 
 //@Controller
 //@RequestMapping(value = "/ipsearch.html")
@@ -51,7 +44,7 @@ public class IpSearchController {
      */
     //@RequestMapping(method = RequestMethod.GET)
     public ModelAndView displayIpSearchForm() {
-        return new ModelAndView("ipsearch-form", "geoLocation", new GeoLocationEntity());
+        return new ModelAndView("ipsearch-form", "geoLocation", new GeoLocation());
     }
     
     /**
@@ -65,7 +58,7 @@ public class IpSearchController {
      * Anything thrown here will be handled by the simpleMappingExceptionResolver bean.
      */
     //@RequestMapping(method=RequestMethod.POST)
-    public String processSearch(@ModelAttribute("geoLocation") GeoLocationEntity geoLocation,
+    public String processSearch(@ModelAttribute("geoLocation") GeoLocation geoLocation,
             //BindingResult formBindingResult,
             ModelMap model) throws Exception {
                 
@@ -78,7 +71,7 @@ public class IpSearchController {
             } else {*/
                 logger.debug("Starting IP-based location search.");
                 
-                GeoLocationEntity resultLocation = service.getGeoLocation(geoLocation.getIpAddress());
+                GeoLocation resultLocation = service.getGeoLocation(geoLocation.getIpAddress());
                 
                 model.addAttribute("countryName", resultLocation.getCountryName());
                 model.addAttribute("cityName", resultLocation.getCityName());

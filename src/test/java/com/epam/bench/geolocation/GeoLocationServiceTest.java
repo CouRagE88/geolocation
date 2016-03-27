@@ -5,7 +5,7 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import com.epam.bench.geolocation.common.errorhandling.GenericException;
-import com.epam.bench.geolocation.domain.GeoLocationEntity;
+import com.epam.bench.geolocation.domain.GeoLocation;
 import com.epam.bench.geolocation.service.GeoLocationService;
 import com.epam.bench.geolocation.service.InvalidIpAddressException;
 import com.epam.bench.geolocation.service.LocationDoesNotExistException;
@@ -22,7 +22,7 @@ public class GeoLocationServiceTest {
 
     @Test
     public void getGetLocationForIpAddress() throws GenericException {
-        GeoLocationEntity geoLocation = geoLocationService.getGeoLocation("223.255.255.0");
+        GeoLocation geoLocation = geoLocationService.getGeoLocation("223.255.255.0");
         assertNotNull(geoLocation);
         assertNotNull(geoLocation.getCountryCode());
         assertNotNull(geoLocation.getCountryName());

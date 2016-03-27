@@ -12,51 +12,52 @@ import org.springframework.stereotype.Repository;
 import org.springframework.util.Assert;
 
 import com.epam.bench.geolocation.dao.GeoLocationDao;
-import com.epam.bench.geolocation.domain.GeoLocationEntity;
+import com.epam.bench.geolocation.domain.GeoLocation;
 
 /**
  * JDBC Implementation if the GeoLocationDao interface
- * @author David_Keri
  *
+ * @author David_Keri
  */
 @Repository
 public class JdbcGeoLocationDaoImpl implements GeoLocationDao {
-    
     private JdbcTemplate jdbcTemplate;
-    
+
     @Autowired
     public JdbcGeoLocationDaoImpl(DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
-    
+
     /**
      * For Unit Testing purposes
-     * @param jdbcTemplate
      */
     public JdbcGeoLocationDaoImpl(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
-    
+
     /**
      * This method is used to query the database for location-info
+     *
      * @param ipNumber is a calculated value based on the user's input IpAddress
-     */   
-    public GeoLocationEntity getGeoLocation(long ipNumber) {
-        
-        GeoLocationEntity entity = jdbcTemplate.queryForObject(
-                    "SELECT country_code, country_name, region_name, city_name, latitude, longitude, zip_code, time_zone" +
-                    " FROM ip2location_db11 WHERE (ip_from <= ? AND ip_to >= ?)", new GeoLocationEntityRowMapper(), ipNumber, ipNumber);
-              
+     */
+    public GeoLocation getGeoLocation(long ipNumber) {
+
+        GeoLocation entity = jdbcTemplate.queryForObject(
+            "SELECT country_code, country_name, region_name, city_name, latitude, longitude, zip_code, time_zone" +
+                " FROM ip2location_db11 WHERE (ip_from <= ? AND ip_to >= ?)", new GeoLocationEntityRowMapper(), ipNumber, ipNumber);
+
         Assert.notNull(entity, "The response object GeoLocationEntity must not be null");
         return entity;
     }
 
-    /**Private RowMapper implementation to populate the GeoLocationEntity objects. */
-    private class GeoLocationEntityRowMapper implements RowMapper<GeoLocationEntity> {
+    /**
+     * Private RowMapper implementation to populate the GeoLocationEntity objects.
+     */
+    private class GeoLocationEntityRowMapper implements RowMapper<GeoLocation> {
 
-        public GeoLocationEntity mapRow(ResultSet rs, int rowNum) throws SQLException {
-            GeoLocationEntity geoLocationEntity = new GeoLocationEntity();
-            
+        public GeoLocation mapRow(ResultSet rs, int rowNum) throws SQLException {
+            GeoLocation geoLocationEntity = new GeoLocation();
+
             geoLocationEntity.setCountryCode(rs.getString("country_code"));
             geoLocationEntity.setCountryName(rs.getString("country_name"));
             geoLocationEntity.setRegionName(rs.getString("country_code"));
@@ -65,9 +66,8 @@ public class JdbcGeoLocationDaoImpl implements GeoLocationDao {
             geoLocationEntity.setLongitude(rs.getFloat("longitude"));
             geoLocationEntity.setZipCode(rs.getString("zip_code"));
             geoLocationEntity.setTimeZone(rs.getString("time_zone"));
-            
-            return geoLocationEntity;
-        } 
-    } 
-}
 
+            return geoLocationEntity;
+        }
+    }
+}

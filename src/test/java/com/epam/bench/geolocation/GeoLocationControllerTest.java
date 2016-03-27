@@ -12,7 +12,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 import com.epam.bench.geolocation.controller.IpSearchController;
-import com.epam.bench.geolocation.domain.GeoLocationEntity;
+import com.epam.bench.geolocation.domain.GeoLocation;
 import com.epam.bench.geolocation.service.GeoLocationService;
 import org.easymock.EasyMock;
 import org.easymock.Mock;
@@ -68,7 +68,7 @@ public class GeoLocationControllerTest extends AbstractJUnit4SpringContextTests 
     public void ProcessSearchTest() throws Exception {
         
         try {
-            GeoLocationEntity geoLocation = CreateSampleLocation();
+            GeoLocation geoLocation = CreateSampleLocation();
             
             expect(geoLocationServiceMock.getGeoLocation(anyObject(String.class))).andReturn(geoLocation);
             replay(geoLocationServiceMock);
@@ -90,7 +90,7 @@ public class GeoLocationControllerTest extends AbstractJUnit4SpringContextTests 
     //TODO
     public void UnderImplementation() throws Exception {
         
-        GeoLocationEntity expectedLocation = CreateSampleLocation();
+        GeoLocation expectedLocation = CreateSampleLocation();
         
         expect(geoLocationServiceMock.getGeoLocation("223.255.255.0")).andReturn(expectedLocation);      
         replay(geoLocationServiceMock);
@@ -104,8 +104,8 @@ public class GeoLocationControllerTest extends AbstractJUnit4SpringContextTests 
     }
     
     //country: AUSTRALIA; region: AU; city: SOUTH BRISBANE; latitude: -27.483330; longitude: 153.016663; zipCode: 4101; timeZone: GMT+10:00
-    protected GeoLocationEntity CreateSampleLocation() {
-        GeoLocationEntity location = new GeoLocationEntity();
+    protected GeoLocation CreateSampleLocation() {
+        GeoLocation location = new GeoLocation();
         location.setIpAddress("223.255.255.0");
         location.setCountryName("Australia");
         location.setRegionName("AU");

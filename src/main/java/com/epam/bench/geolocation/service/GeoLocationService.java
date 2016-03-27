@@ -3,8 +3,11 @@ package com.epam.bench.geolocation.service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.epam.bench.geolocation.common.errorhandling.GenericException;
-import com.epam.bench.geolocation.domain.GeoLocationEntity;
+import com.epam.bench.geolocation.domain.GeoLocation;
 
+/**
+ * Service to retrieve geo location information based on received ip address.
+ */
 @Transactional(readOnly=true)
 public interface GeoLocationService {
     
@@ -14,6 +17,6 @@ public interface GeoLocationService {
      * @return The location information based on the ipAddress
      * @throws GenericException
      */
-    GeoLocationEntity getGeoLocation(String ipAddress) throws GenericException;
+    GeoLocation getGeoLocation(String ipAddress) throws GenericException;
 }
 

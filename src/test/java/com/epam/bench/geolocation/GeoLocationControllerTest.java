@@ -1,35 +1,30 @@
 package com.epam.bench.geolocation;
 
-import static org.junit.Assert.*;
-
-import org.easymock.EasyMock;
-import org.easymock.Mock;
-import org.junit.Before;
-import org.junit.After;
-import org.junit.Test;
 import static org.easymock.EasyMock.anyObject;
 import static org.easymock.EasyMock.expect;
 import static org.easymock.EasyMock.replay;
 import static org.easymock.EasyMock.verify;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
-import org.springframework.test.context.web.WebAppConfiguration;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.context.WebApplicationContext;
-import org.springframework.web.servlet.View;
-
-import com.epam.bench.geolocation.common.errorhandling.GenericException;
 import com.epam.bench.geolocation.controller.IpSearchController;
 import com.epam.bench.geolocation.domain.GeoLocationEntity;
 import com.epam.bench.geolocation.service.GeoLocationService;
-
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import org.easymock.EasyMock;
+import org.easymock.Mock;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.servlet.View;
 
 @ContextConfiguration("classpath:conf/spring/spring-servlet-test.xml")
 //@ContextConfiguration(locations = {"classpath:conf/spring/spring-config.xml", "classpath:conf/spring/spring-servlet-test.xml"})

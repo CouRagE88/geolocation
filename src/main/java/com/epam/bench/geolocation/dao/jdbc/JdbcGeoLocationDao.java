@@ -20,18 +20,18 @@ import com.epam.bench.geolocation.domain.GeoLocation;
  * @author David_Keri
  */
 @Repository
-public class JdbcGeoLocationDaoImpl implements GeoLocationDao {
+public class JdbcGeoLocationDao implements GeoLocationDao {
     private JdbcTemplate jdbcTemplate;
 
     @Autowired
-    public JdbcGeoLocationDaoImpl(DataSource dataSource) {
+    public JdbcGeoLocationDao(DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
     /**
      * For Unit Testing purposes
      */
-    public JdbcGeoLocationDaoImpl(JdbcTemplate jdbcTemplate) {
+    public JdbcGeoLocationDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
